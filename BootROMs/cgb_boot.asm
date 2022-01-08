@@ -1,4 +1,4 @@
-; SameBoy CGB bootstrap ROM
+ ; SameBoy CGB bootstrap ROM
 ; Todo: use friendly names for HW registers instead of magic numbers
 SECTION "BootCode", ROM0[$0]
 Start:
@@ -95,20 +95,20 @@ ELSE
 
     ; Repeat the 3 tiles common between E and B. This saves 27 bytes after
     ; compression, with a cost of 17 bytes of code.
-    push af
-    sub $20
-    sub $3
-    jr nc, .notspecial
-    add $20
-    call .write_with_palette
-    dec c
+    ;push af                    
+    ;sub $20                    
+    ;sub $3                     ;gamebouy, add these back later
+    ;jr nc, .notspecial         
+    ;add $20                    
+    ;call .write_with_palette   
+    ;dec c                      
 .notspecial
-    pop af
+    ;pop af                     
 
     add d ; d = 3 for SameBoy logo, d = 1 for Nintendo logo
     dec c
     jr nz, .tilemapRowLoop
-    sub 44
+    sub 47                      ;gamebouy, add back the 3, from 44
     push de
     ld de, $10
     add hl, de
